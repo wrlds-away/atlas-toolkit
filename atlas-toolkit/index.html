@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- to do: scale UI and scale window size depending on the resolution of the user's device -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- left vertical panel start -->
+        <div class="vertical-panel">
+
+            <!-- search for a setting -->
+            <!-- to do: create an index system for settings -->
+            <!-- to do: create a sorting system to sort settings -->
+            <!-- to do: create a search system to search for settings-->
+
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Find a setting">
+                <img src="icons/search-icon.ico" alt="Search Icon" class="search-icon" width="16" height="16">
+            </div>
+
+            <!-- panel buttons start -->
+            <button id="personalization-button" class="panel-button">
+                <img src="icons/personalization.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">Personalization</span>
+            </button>
+
+            <button id="network-button" class="panel-button">
+                <img src="icons/bluetooth.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">Bluetooth & internet</span>
+            </button>
+
+            <button id="system-button" class="panel-button">
+                <img src="icons/system.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">System</span>
+            </button>
+
+            <button id="apps-button" class="panel-button">
+                <img src="icons/features.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">Apps & features</span>
+            </button>
+
+            <button id="performance-button" class="panel-button">
+                <img src="icons/performance.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">Performance</span>
+            </button>
+
+            <button id="privacy-button" class="panel-button">
+                <img src="icons/privacysecurity.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">Privacy & security</span>
+            </button>
+
+            <button id="update-button" class="panel-button">
+                <img src="icons/windowsupdate.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">Windows Update</span>
+            </button>
+
+            <button id="settings-button" class="panel-button">
+                <img src="icons/toolkit.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">Tool configuration</span>
+            </button>
+
+            <button id="exit-app" class="panel-button" onclick="self.close()">
+                <img src="icons/dismissexit.svg" alt="Icon" width="24" height="24">
+                <span class="button-text">Exit Atlas Tool</span>
+            </button>
+            <!-- panel buttons end -->
+        </div>
+        <!-- left vertical panel end -->
+
+
+        <!-- content area for corresponding button start -->
+        <div class="content-area">
+
+            <!-- personalization content start -->
+            <div id="personalization-content" class="content-section">
+                <h2>Personalization</h2>
+
+                <!-- dark mode container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Turn on dark mode systemwide</p>
+                            <p class="option-description">Change the color mode that appears in Windows and your apps
+                            </p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="dark_mode-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- context menu container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Use the legacy right-click menu</p>
+                            <p class="option-description">Use the legacy right-click menu over the modern right-click
+                                menu</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="context_menu-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- recycle bin container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Hide the Recycle Bin on desktop</p>
+                            <p class="option-description">Hide the Recycle Bin shortcut and show it under This PC in
+                                Explorer</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="recycle_bin-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- legacy balloons container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Use Legacy Balloon Notifications</p>
+                            <p class="option-description">Render taskbar notifications as balloons instead of toast
+                                notifications</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="taskbar_balloons-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- wallpaper history container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Clear recent background history</p>
+                            <p class="option-description">Clear recent images used as wallpapers. This keeps default
+                                wallpapers.</p>
+                        </div>
+                        <button id="background_history-button" class="clear-button">Clear</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- personalization content end -->
+
+
+            <!-- system content start -->
+            <div id="system-content" class="content-section hidden">
+                <h2>System</h2>
+
+                <!-- superfetch container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Disable <b>Prefetch</b> and <b>Superfetch</b></p>
+                            <p class="option-description">Free up CPU used to index routinely accessed data, this
+                                disables memory compression</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="superfetch-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- background apps container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Disable <b>Background Apps</b></p>
+                            <p class="option-description">Stop closed apps running in the background, this disables
+                                notifications for some apps</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="background_apps-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- screen edge swipe container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Turn off screen edge swipe</p>
+                            <p class="option-description">Disabling screen edge swipe fixes the taskbar pop-up when the
+                                device is in fullscreen</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="screen_swipe-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- multiplane overlay container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Turn off multiplane overlay (MPO)</p>
+                            <p class="option-description">MPO reduces CPU and GPU overhead but may cause stuttering
+                                issues on the desktop</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="multiplane-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- windows uefi time container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Sync Windows clock to UEFI clock</p>
+                            <p class="option-description">Sync the Windows time to the time set in UEFI instead of
+                                syncing to Windows servers</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="sync_time-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- cached icons container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Clear all cached icons and images</p>
+                            <p class="option-description">Clear all icons and images from the system icon-cache
+                                directory. A restart is required.</p>
+                        </div>
+                        <button id="icon_cache-button" class="clear-button">Clear</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- system content end -->
+
+
+            <!-- privacy security content start -->
+            <div id="privacy-content" class="content-section hidden">
+                <h2>Privacy & security</h2>
+
+                <!-- uac container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Turn off User Account Control</p>
+                            <p class="option-description">Disabling User Account Control allows apps to automatically
+                                elevate system privileges</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="uac-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- unsigned drivers container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Enable installation of unsigned drivers</p>
+                            <p class="option-description">Allow the installation of unsigned drivers, unsigned drivers
+                                may contain harmful content</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="unsigned_drivers-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- mitigations container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Disable <b>Spectre</b> and <b>Meltdown</b> mitigations</p>
+                            <p class="option-description">Bypass software patches for Spectre and Meltdown, this should
+                                not be disabled for AMD</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="mitigations-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- defender container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Disable <b>Windows Defender</b> and related services</p>
+                            <p class="option-description">Free up CPU used for Windows Defender services. This will keep
+                                Windows Firewall enabled.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="defender-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- tsx container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Enable Transactional Synchronization Extensions (TSX)</p>
+                            <p class="option-description">Enable TSX on Intel® processors. TSX increases performance but
+                                has security vulnerabilities.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="intel_tsx-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <!-- privacy security content end -->
+
+
+            <!-- performance content start -->
+            <div id="performance-content" class="content-section hidden">
+                <h2>Performance</h2>
+
+                <!-- windowed optimization container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Turn on <b>optimizations for windowed games</b></p>
+                            <p class="option-description">Reduce latency by using the new flip presentation model in
+                                windowed DirectX® 10 & 11 games</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="windowed_games-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- fso container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Turn on <b>Fullscreen Optimizations</b> systemwide</p>
+                            <p class="option-description">Enabling this setting may increase performance and reduce
+                                latency for fullscreen apps</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="fso-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- hags container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Turn on <b>hardware-accelerated GPU scheduling</b></p>
+                            <p class="option-description">Reduce latency by allowing the GPU to handle processing
+                                scheduling instead of through the CPU</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="hags-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- usb container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Disable <b>USB selective suspend</b> and <b>USB sleeping</b></p>
+                            <p class="option-description">Reduce I/O latency by preventing connected USB ports and
+                                devices from going into sleep states</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="usb_suspend-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- device usage container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Disable device analytics reporting</p>
+                            <p class="option-description">Stop services from reporting network usage, battery health,
+                                and device utilization to free up CPU</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="device_reporting-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- task manager container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Turn off Task Manager monitoring</p>
+                            <p class="option-description">Stop services from monitoring network, graphics, and app usage
+                                in Task Manager to free up CPU</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="taskmgr_monitor-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <!-- performance content end -->
+
+
+            <!-- apps features content start -->
+            <div id="apps-content" class="content-section hidden">
+                <h2>Apps & features</h2>
+                <p>Apps & features settings coming soon.</p>
+            </div>
+            <!-- apps features content end -->
+
+
+            <!-- windows update content start -->
+            <div id="update-content" class="content-section hidden">
+                <h2>Windows Update</h2>
+
+                <!-- windows update container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Disable <b>Windows Update</b> and related services</p>
+                            <p class="option-description">Updates will be paused until 01/01/2040. This will also
+                                disable Delivery Optimization.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="winupdate-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- hide update page container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Hide Windows Update page in Windows Settings</p>
+                            <p class="option-description">Hide this page to hide update notifications. Showing this page
+                                will show update notifications.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="hide_winupdate-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- driver software container -->
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-details">
+                            <p class="option-title">Never install driver software from Windows Update</p>
+                            <p class="option-description">Prevent Windows from downloading and installing outdated or
+                                incompatible driver updates for your device</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="no_drvupdates-switch">
+                            <span class="slider" tabindex="0"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <!-- windows update content end -->
+
+
+            <!-- tool settings content start -->
+            <div id="settings-content" class="content-section hidden">
+                <h2>Tool configuration</h2>
+                <p>Tool configuration coming soon.</p>
+            </div>
+            <!-- tool settings content end -->
+
+        </div>
+    </div>
+
+    <!-- include window.js for current window -->
+    <script src="window.js"></script>
+
+</body>
+
+</html>
