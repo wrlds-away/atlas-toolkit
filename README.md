@@ -7,3 +7,4 @@ To test-run the Atlas Toolkit app:
 ```
 npm install electron --save-dev
 ```
+* This project is fully documented.
