@@ -15,10 +15,12 @@ function Test-RegistryValue {
         $value = (Get-ItemProperty -Path $KeyPath -Name $ValueName).$ValueName
         if ($value -eq $ExpectedValue) {
             return $true
-        } else {
+        }
+        else {
             return $false
         }
-    } catch {
+    }
+    catch {
         return $false
     }
 }
