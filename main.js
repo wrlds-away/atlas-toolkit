@@ -1,8 +1,10 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
 const { spawn } = require('child_process');
 const path = require('path');
 
 let MainWindow;
+
+nativeTheme.themeSource = 'system';
 
 function CreateWindow() {
     MainWindow = new BrowserWindow({
